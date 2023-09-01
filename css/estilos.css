@@ -1,0 +1,22 @@
+body{
+    text-align: center;
+    background-image: url("../img/login/fondologin.png");
+    width: 100%;
+    height: 100%;
+    background-size: auto;
+    margin: 0 auto;
+   
+}
+
+#login{
+    border-radius: 20px;
+    box-shadow: 10px 5px 5px gray;
+    width: 300px;
+    height: 350px;
+    background-color:white;
+    margin-left: 40%;
+    margin-top: 10%;
+    text-align: center;
+        
+}
+
