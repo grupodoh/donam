@@ -41,8 +41,47 @@
           </nav>          
     </div>
 
-      
-    
+     <div class="m-4 p-5">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="./img/banner/bannerinicio.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="./img/banner/bannerinicio.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="./img/banner/bannerinicio.png" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div> 
+    <div class="container text-center">
+        <div class="row">
+            <div class="rep-van-inv g-col-4 m-5">
+                <img src="./img/icons/VectorReportes.png" alt="Reportes">
+                <p class="texto-tarjetas">Reportes</p>
+            </div>
+       
+            <div class="rep-van-inv g-col-4 m-5">
+                <img src="./img/icons/VactorVentas.png" alt="Ventas">
+                <p class="texto-tarjetas">Ventas</p>
+            </div>
+        
+            <div class="rep-van-inv g-col-4 m-5">
+                <img src="./img/icons/VectorInventario.png" alt="Inventarios">
+                <p class="texto-tarjetas">Inventario</p>
+            </div>
+        </div>
+    </div>
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>

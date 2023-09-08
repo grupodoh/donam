@@ -93,3 +93,25 @@ ul li a{
     color: #C19A6B;
 
 }
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.titulos{
+    text-align: center;
+    width: 325px;
+    height: 66px;
+    left: calc(50% - 325px/2 + 0.5px);
+    top: 163px;
+
+    font-family: 'Goudy Old Style';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 55.1331px;
+    line-height: 66px;
+
+    color: #C19A6B;
+    width: 100%;
+}

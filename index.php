@@ -39,7 +39,10 @@
                             </div>
 
                             <div class="d-grid gap-2 mb-3">
+                            <a  href="./home.php" >
                                 <button type="submit" class="btn btn-primary" style="background-color: #646CA4;">Ingresar</button>
+                            </a>    
+                            
                             </div>
                             
                             <span>
