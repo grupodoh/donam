@@ -39,3 +39,57 @@ body{
     color: #646CA4;
     size: 10px;
 }
+
+.menu-color{
+    background-color: #dd1717;
+}
+
+ul li a{
+    color:#C19A6B;
+}
+
+.items-menu{
+    color:#C19A6B !important; 
+    border: 1px solid; 
+    border-radius: 10px;
+}
+
+.banner{
+    
+    
+}
+
+.rep-van-inv{
+    /* width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    border: 1px solid; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 42px 64px;
+    gap: 17px;
+
+    width: 235px;
+    height: 217.81px;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(167, 169, 172, 0.5);
+    box-shadow: 0px 4px 50px #A7A9AC;
+    border-radius: 48px;
+}
+
+.texto-tarjetas{
+    width: 118px;
+    height: 29px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23.8187px;
+    line-height: 29px;
+
+    color: #C19A6B;
+
+}
