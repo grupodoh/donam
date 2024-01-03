@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+// //require_once './acciones/validacion.php';
+// echo"<p> Hola ".$_SESSION['username']." deseas salir? </p>";
+// echo"<p><a href='../../acciones/logout.php'>Has click  aquí para salir</a> </p>\n<br>";
+// echo "ESTAS EN LA PAGINA DE INICIO PARA EL ADMINISTRADOR";
+// ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Doña M</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href="css/estilos.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/estilos.css" rel="stylesheet" type="text/css" />
     </head>
 <body>
     <div style="background-color: #D7DCE1; ">
@@ -15,10 +24,10 @@
               <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <a class="navbar-brand" href="./home.php" style=" color:#C19A6B">Doña M</a>
+              <a class="navbar-brand" href="inicio.php" style=" color:#C19A6B">Doña M</a>
               <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header" style=" color:#C19A6B">
-                  <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Restaurante Doña M</h5>
+                  <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Restaurante Doña M - Usuario: <?php echo "</br>".$_SESSION['username'] ?></h5>
                   <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body" style=" color:#C19A6B">
@@ -33,10 +42,10 @@
                         <a class="nav-link items-menu" href="#" style="color:#C19A6B">Inventario</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link items-menu" href="./Config.php" style="color:#C19A6B">Configuración</a>
+                        <a class="nav-link items-menu" href="Config.php" style="color:#C19A6B">Configuración</a>
                       </li> 
                       <li class="nav-item">
-                        <a class="nav-link items-menu" href="./index.php" style="color:#C19A6B">Salir</a>
+                        <a class="nav-link items-menu" href="../../acciones/logout.php" style="color:#C19A6B">Salir</a>
                       </li>                   
                 </div>
               </div>
@@ -48,13 +57,13 @@
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="./img/banner/bannerinicio.png" class="d-block w-100" alt="...">
+                <img src="../../img/banner/bannerinicio.png" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="./img/banner/bannerinicio.png" class="d-block w-100" alt="...">
+                <img src="../../img/banner/bannerinicio.png" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="./img/banner/bannerinicio.png" class="d-block w-100" alt="...">
+                <img src="../../img/banner/bannerinicio.png" class="d-block w-100" alt="...">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -70,18 +79,18 @@
     <div class="container text-center">
         <div class="row">
             <div class="rep-van-inv g-col-4 m-5">
-                <img src="./img/icons/VectorReportes.png" alt="Reportes">
-                <p class="texto-tarjetas">Reportes</p>
+                <img src="../../img/icons/VectorRoles.png" alt="Reportes">
+                <p class="texto-tarjetas"><a href="roles.php">Roles</a></p>
             </div>
        
             <div class="rep-van-inv g-col-4 m-5">
-                <img src="./img/icons/VactorVentas.png" alt="Ventas">
-                <p class="texto-tarjetas">Ventas</p>
+                <img src="../../img/icons/VectorUsuarios.png" alt="Ventas">
+                <p class="texto-tarjetas"><a href="">Usuarios</a></p>
             </div>
         
             <div class="rep-van-inv g-col-4 m-5">
-                <img src="./img/icons/VectorInventario.png" alt="Inventarios">
-                <p class="texto-tarjetas">Inventario</p>
+                <img src="../../img/icons/VectorSeguridad.png" alt="Inventarios">
+                <p class="texto-tarjetas"><a href="">Seguridad</a></p>
             </div>
         </div>
     </div>

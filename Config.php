@@ -64,6 +64,11 @@
                 <img src="./img/icons/VectorSeguridad.png" alt="Inventarios">
                 <p class="texto-tarjetas">Seguridad</p>
             </div>
+
+            <div class="rep-van-inv g-col-4 m-5">
+                <img src="./img/icons/VectorUsuarios.png" alt="Ventas">
+                <p class="texto-tarjetas">Clientes</p>
+            </div>
         </div>
     </div>
    </div>

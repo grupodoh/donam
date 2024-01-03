@@ -1,3 +1,7 @@
+<?php
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,37 +21,38 @@
                     <div class="row my-5 mx-4">
                         <div class="col-12">
                             <h5>Inicio de sesión</h5>
+                             <form action="acciones/validacion.php" method="post">   
+                                    <div class="input-group mb-4 mt-4">
+                                        <div class="d-flex estilo-icon-input align-items-center justify-content-center">
+                                            <img class="mx-2" style="height: 15px; width: 15px;" src="img/icons/Vector.png">
+                                        </div>
+                                        <input type="text" class="quitar-borde-left form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="Username" id="Username" required>
+                                    </div>
 
-                            <div class="input-group mb-4 mt-4">
-                                <div class="d-flex estilo-icon-input align-items-center justify-content-center">
-                                    <img class="mx-2" style="height: 15px; width: 15px;" src="img/icons/Vector.png">
-                                </div>
-                                <input type="text" class="quitar-borde-left form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <div class="d-flex estilo-icon-input align-items-center justify-content-center">
-                                    <img class="mx-2" style="height: 15px; width: 15px;" src="img/icons/VectorPass.png">
-                                </div>
-                                <input type="password" class="quitar-borde-left form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
+                                    <div class="input-group mb-3">
+                                        <div class="d-flex estilo-icon-input align-items-center justify-content-center">
+                                            <img class="mx-2" style="height: 15px; width: 15px;" src="img/icons/VectorPass.png">
+                                        </div>
+                                        <input type="password" class="quitar-borde-left form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" name="password" id="password" required>
+                                    </div>
 
 
-                            <div class="my-4 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label estilos-links" style="float:left;" for="exampleCheck1">Recordarme</label>
-                            </div>
+                                    ` <div class="my-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label estilos-links" style="float:left;" for="exampleCheck1">Recordarme</label>
+                                    </div>`
 
-                            <div class="d-grid gap-2 mb-3">
-                            <a  href="./home.php" >
-                                <button type="submit" class="btn btn-primary" style="background-color: #646CA4;">Ingresar</button>
-                            </a>    
-                            
-                            </div>
-                            
-                            <span>
-                                <p><a class="estilos-links" href="#">¿Olvidaste tu contraseña?</a></p>
-                            </span>
+                                    <div class="d-grid gap-2 mb-3">
+                                    <a  href="./home.php" >
+                                        <button type="submit" class="btn btn-primary" style="background-color: #646CA4;">Ingresar</button>
+                                    </a>    
+                                    
+                                    </div>
+                                    
+                                    <span>
+                                        <p><a class="estilos-links" href="#">¿Olvidaste tu contraseña?</a></p>
+                                    </span>
+                             </form>
 
                         </div>
                     </div>

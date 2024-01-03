@@ -4,7 +4,12 @@ body{
     width: 100%;
     height: 100%;
     background-size: auto;
-   
+    
+}
+
+a{
+    text-decoration: none;
+    color: #C19A6B;
 }
 
 #login{
