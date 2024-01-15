@@ -1,8 +1,14 @@
 <?php
 
 session_start();
+
 include("../../acciones/consultas/roles.php");
-// include('./acciones/configuracion.php');
+
+if(!isset($_SESSION['username'])){
+
+  header("Location: ../../index.php");
+
+}else {
 
 ?>
 
@@ -94,3 +100,9 @@ include("../../acciones/consultas/roles.php");
 </body>
 
 </html>
+
+<?php
+
+}
+
+?>
