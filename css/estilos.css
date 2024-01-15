@@ -65,24 +65,28 @@ ul li a{
 }
 
 .rep-van-inv{
-    /* width: 250px;
+    /* width: 200px;
     height: 250px;
-    border-radius: 10px;
-    border: 1px solid; */
+     */
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 42px 64px;
+    padding: 32px 54px;
     gap: 17px;
 
-    width: 235px;
-    height: 217.81px;
+    width: 180px;
+    height: 169px;
 
     background: #FFFFFF;
     border: 1px solid rgba(167, 169, 172, 0.5);
     box-shadow: 0px 4px 50px #A7A9AC;
     border-radius: 48px;
+}
+
+.rep-van-inv img{
+    width: 50px;
+    height: auto;
 }
 
 .texto-tarjetas{
@@ -114,9 +118,15 @@ ul li a{
     font-family: 'Goudy Old Style';
     font-style: normal;
     font-weight: 700;
-    font-size: 55.1331px;
+    font-size: 45.1331px;
     line-height: 66px;
 
     color: #C19A6B;
     width: 100%;
+    margin-top: 90px;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
 }

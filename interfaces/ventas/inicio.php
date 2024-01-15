@@ -1,10 +1,12 @@
 <?php
 
 session_start();
-// require_once './acciones/validacion.php';
-// echo"<p> Hola ".$_SESSION['username']." deseas salir? </p>";
-// echo"<p><a href='../../acciones/logout.php'>Has click  aquí para salir</a> </p>\n<br>";
-// echo "ESTAS EN LA PAGINA DE INICIO PARA EL VENDEDOR";
+
+if(!isset($_SESSION['username'])){
+
+  header("Location: ../../index.php");
+
+}else{
 
 ?>
 
@@ -94,3 +96,9 @@ session_start();
   </body>
 </body>
 </html>
+
+<?php
+
+}
+
+?>

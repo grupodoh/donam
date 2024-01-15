@@ -1,11 +1,14 @@
 <?php
 
-session_start();
-// require_once './acciones/validacion.php';
+ session_start();
 
-// echo"<p> Hola ".$_SESSION['username']." deseas salir? </p>";
-// echo"<p><a href='../../acciones/logout.php'>Has click  aquí para salir</a> </p>\n<br>";
-// echo "ESTAS EN LA PAGINA DE INICIO PARA EL SUB-ADMINISTRADOR";
+
+if(!isset($_SESSION['username'])){
+
+  header("Location: ../../index.php");
+
+}else {
+ 
 
 ?>
 
@@ -44,7 +47,7 @@ session_start();
                         <a class="nav-link items-menu" href="./Config.php" style="color:#C19A6B">Configuración</a>
                       </li> 
                       <li class="nav-item">
-                        <a class="nav-link items-menu" href="../../acciones/logout.php" style="color:#C19A6B">Salir</a>
+                        <a class="nav-link items-menu" href="../../acciones/logout/logout.php" style="color:#C19A6B">Salir</a>
                       </li>                   
                 </div>
               </div>
@@ -80,12 +83,12 @@ session_start();
                   
             <div class="rep-van-inv g-col-4 m-5">
                 <img src="../../img/icons/VactorVentas.png" alt="Ventas">
-                <p class="texto-tarjetas">Ventas</p>
+                <p class="texto-tarjetas"><a href="">Ventas</a></p>
             </div>
         
             <div class="rep-van-inv g-col-4 m-5">
                 <img src="../../img/icons/VectorInventario.png" alt="Inventarios">
-                <p class="texto-tarjetas">Inventario</p>
+                <p class="texto-tarjetas"><a href="">Inventario</a></p>
             </div>
         </div>
     </div>
@@ -94,3 +97,9 @@ session_start();
   </body>
 </body>
 </html>
+
+<?php
+
+}
+
+?>

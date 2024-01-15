@@ -1,20 +1,11 @@
 <?php
-
-include('configuracion.php');
+include('../configuracion.php');
 
 session_start();
-
-$user = $_REQUEST['Username'];
-$pass = $_REQUEST['password'];
-
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if($conn->connect_error){
-        die("Error de conexion: ".$conn->connect_error);
-    }
-}
+function acceder($user, $pass, $con){
 
 $sql = "SELECT * FROM usuarios_sistema WHERE numero_documento = $user AND usuario_pass = '$pass' ";
-$result = $conn->query($sql);
+$result = $con->query($sql);
 
 if($result->num_rows == 1){
     $row = $result->fetch_assoc();
@@ -26,20 +17,22 @@ if($result->num_rows == 1){
 
     switch ($rol) {
         case 1:
-            header("Location: ../interfaces/admin/inicio.php");
+            header("Location: ../../interfaces/admin/inicio.php");
             break;
         case 2:
-            header("Location: ../interfaces/subadmin/inicio.php");
+            header("Location: ../../interfaces/subadmin/inicio.php");
             break;
         case 3:
-            header("Location: ../interfaces/ventas/inicio.php");
+            header("Location: ../../interfaces/ventas/inicio.php");
             break;
     }
     exit();
     
 }else{
     $error = "Usuario o contraseña incorrectos";
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
 }
+}
+
 
 ?>

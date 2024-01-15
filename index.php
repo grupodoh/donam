@@ -1,5 +1,25 @@
 <?php
 
+session_start();
+
+if(isset($_SESSION['user_id'])){
+
+   
+    switch ($_SESSION['user_id']) {
+        case 1:
+            header("Location: interfaces/admin/inicio.php");
+            break;
+        case 2:
+            header("Location: interfaces/subadmin/inicio.php");
+            break;
+        case 3:
+            header("Location: interfaces/ventas/inicio.php");
+            break;
+    }
+    exit();
+  
+  }else {
+   
 
 ?>
 
@@ -21,7 +41,7 @@
                     <div class="row my-5 mx-4">
                         <div class="col-12">
                             <h5>Inicio de sesión</h5>
-                             <form action="acciones/validacion.php" method="post">   
+                             <form action="acciones/login/validacion.php" method="post">   
                                     <div class="input-group mb-4 mt-4">
                                         <div class="d-flex estilo-icon-input align-items-center justify-content-center">
                                             <img class="mx-2" style="height: 15px; width: 15px;" src="img/icons/Vector.png">
@@ -62,4 +82,10 @@
     </div>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
+<?php
+
+  }
+
+  ?>
+
 </html>
