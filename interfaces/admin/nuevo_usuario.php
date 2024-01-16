@@ -84,7 +84,7 @@ if (!isset($_SESSION['username'])) {
         <div class="container text-center">
 
            
-                <form action="../../acciones/insertar/editar_usuario.php">
+                <form action="../../acciones/insertar/crear_usuario.php">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="nombre de usuario" value="" required>
                         <label for="floatingPassword">Nombre</label>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['username'])) {
                         <label for="floatingPassword">Apellido</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <select class="form-select form-select-lg mb-3" name="doc_usuario" id="doc_usuario"aria-label="Large select example">
+                        <select class="form-select form-select-lg mb-3" name="tipo_doc_usuario" id="tipo_doc_usuario"aria-label="Large select example">
                         <option selected>Seleccione un tipo de documento</option>
                     <?php
 
@@ -116,7 +116,7 @@ if (!isset($_SESSION['username'])) {
                     </div>
 
                     <div class="form-floating mb-3">
-                        <select class="form-select form-select-lg mb-3" name="doc_usuario" id="doc_usuario"aria-label="Large select example">
+                        <select class="form-select form-select-lg mb-3" name="tipo_rol" id="tipo_rol"aria-label="Large select example">
                         <option selected>Seleccione un tipo de rol</option>
                     <?php
 

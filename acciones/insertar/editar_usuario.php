@@ -14,7 +14,5 @@ editarInfoUser($id, $nombre, $apellido, $num_id, $conn);
    
 
 header("Location: ../../interfaces/admin/usuarios.php");   
-    
-
 
 ?>
