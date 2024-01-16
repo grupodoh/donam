@@ -4,7 +4,7 @@ session_start();
 
 include("../../acciones/consultas/usuarios.php");
 
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['username']) || $_SESSION['status'] == 0){
 
     header("Location: ../../index.php");
   

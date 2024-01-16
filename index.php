@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_SESSION['user_id'])){
+if(isset($_SESSION['user_id']) && $_SESSION['status'] == 1){
 
    
     switch ($_SESSION['user_id']) {

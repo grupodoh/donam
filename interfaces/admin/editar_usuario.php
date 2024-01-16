@@ -5,7 +5,7 @@ session_start();
 include('../../acciones/consultas/consultar_editar_usuarios.php');
 include('../../acciones/configuracion.php');
 
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || $_SESSION['status'] == 0) {
 
     header("Location: ../../index.php");
 } else {

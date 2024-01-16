@@ -13,6 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 }
 
+//Se usa la función acceder y se envian las variables $user,$pass, $conn
 acceder($user,$pass, $conn);
 
 
