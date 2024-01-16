@@ -7,6 +7,7 @@
     $result = $con->query($sql);
 
     return $result;
+    
 
 }
 
