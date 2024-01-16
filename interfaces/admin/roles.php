@@ -83,7 +83,6 @@ if(!isset($_SESSION['username'])){
            $datos = getRoles($conn);
 
           foreach ($datos as $dato) {
-            echo "";
         
             echo "<tr><th scope='row'>".$dato['id_rol']."</th> <td >".$dato['nombre_rol']."</td> <td style= 'text-align: justify;'>".$dato['descripcion_rol']."</td> </tr>";
             

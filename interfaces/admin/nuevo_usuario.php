@@ -4,6 +4,9 @@ session_start();
 
 include('../../acciones/consultas/consultar_editar_usuarios.php');
 include('../../acciones/configuracion.php');
+include('../../acciones/consultas/roles.php');
+include('../../acciones/consultas/tipo_documento.php');
+
 
 if (!isset($_SESSION['username'])) {
 
@@ -55,6 +58,7 @@ if (!isset($_SESSION['username'])) {
                                 <li class="nav-item">
                                     <a class="nav-link items-menu" href="../../acciones/logout/logout.php" style="color:#C19A6B">Salir</a>
                                 </li>
+                                
                         </div>
                     </div>
                 </div>
@@ -72,45 +76,67 @@ if (!isset($_SESSION['username'])) {
 
             <div class="container text-center titulos" style="display: block;">
                 <p>
-                    EDITAR INFORMACIÓN DE USUARIO
+                    CREAR NUEVO USUARIO
                 </p>
             </div>
         </div>
 
         <div class="container text-center">
 
-            <?php
-
-            $id_user = $_REQUEST['id_usuario_editar'];
-
-            $con = $conn;
-            $datos_usuario = editarUsuario($id_user, $con);
-
-            foreach ($datos_usuario as $info) {
-
-
-            ?>
+           
                 <form action="../../acciones/insertar/editar_usuario.php">
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control" name="id_usuario" id="id_usuario" placeholder="123456" value="<?php echo $info['id_usuario'] ?>" readonly>
-                        <label for="floatingInput">ID</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="nombre de usuario" value="<?php echo $info['nombre_usuario'] ?>" required>
+                        <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="nombre de usuario" value="" required>
                         <label for="floatingPassword">Nombre</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="apellido_usuario" id="apellido_usuario" placeholder="apellido de usuario" value="<?php echo $info['apellido_usuario'] ?>" >
+                        <input type="text" class="form-control" name="apellido_usuario" id="apellido_usuario" placeholder="apellido de usuario" value="" required>
                         <label for="floatingPassword">Apellido</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="doc_usuario" id="doc_usuario" placeholder="número de documento de identidad" value="<?php echo $info['numero_documento'] ?>" required>
+                        <select class="form-select form-select-lg mb-3" name="doc_usuario" id="doc_usuario"aria-label="Large select example">
+                        <option selected>Seleccione un tipo de documento</option>
+                    <?php
+
+                                $docType=getTipoDocumento($conn);
+
+                                foreach ($docType as $type ) {      
+                                    
+                                    echo "
+                                    <option value='".$type['id_tipo_documento']."'>".$type['nombre_tipo_documento']."</option>";
+                                }
+                                ?>
+                        </select>
+                        <label for="floatingPassword">Tipo de documento de identidad</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="doc_usuario" id="doc_usuario" placeholder="número de documento de identidad" value="" required>
                         <label for="floatingPassword">Número de documento de identidad</label>
                     </div>
 
-                    <button type="submmit" class="btn btn-success mb-3">Actualizar</button>
+                    <div class="form-floating mb-3">
+                        <select class="form-select form-select-lg mb-3" name="doc_usuario" id="doc_usuario"aria-label="Large select example">
+                        <option selected>Seleccione un tipo de rol</option>
+                    <?php
+
+                                $roles=getRoles($conn);
+
+                                foreach ($roles as $rol ) {      
+                                    
+                                    echo "
+                                    <option value='".$rol['id_rol']."'>".$rol['nombre_rol']."</option>";
+                                }
+                                ?>
+                        </select>
+                        <label for="floatingPassword">Tipo de documento de identidad</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="password" id="password" placeholder="número de documento de identidad" value="" required>
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+
+                    <button type="submmit" class="btn btn-success mb-3">Crear Usuario</button>
 
                 </form>
         </div>
@@ -122,7 +148,7 @@ if (!isset($_SESSION['username'])) {
     </html>
 
 <?php
-            }
+            
         }
 
 ?>

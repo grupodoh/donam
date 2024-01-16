@@ -61,9 +61,9 @@ if(!isset($_SESSION['username'])){
     </div>
 
     <div style="margin-top: 70px; display: inline-block;">
-        <div style="">
-            <form action="">
-                <button type="button" class="btn btn-success">+ Nuevo Usuario</button>
+        <div>
+            <form action="nuevo_usuario.php">
+                <button type="submit" class="btn btn-success">+ Nuevo Usuario</button>
             </form>
         </div>
         <div class="container text-center titulos" style="display: block;">
@@ -89,18 +89,18 @@ if(!isset($_SESSION['username'])){
                 $datos = getUsers($conn);
 
                 foreach ($datos as $dato) {
-                    echo "";
 
                     echo "<tr>
-            <th scope='row'>" . $dato['id_usuario'] . "</th> 
-            <td >" . $dato['nombre_usuario'] . "</td> 
-            <td>" . $dato['apellido_usuario'] . "</td>
-            <td>
-            <form action='' method='post'>            
-            <button class='btn btn-success' data-bs-toggle='modal input_editar_user' data-bs-target='#editarInfoUser' value = 'Editar'>Editar</button> 
-            </form>
-            <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#eliminarUser' value = 'Eliminar'>Eliminar</button></td></tr>";
-                }
+                    <th scope='row'>" . $dato['id_usuario'] . "</th> 
+                    <td >" . $dato['nombre_usuario'] . "</td> 
+                    <td>" . $dato['apellido_usuario'] . "</td>
+                    <td>
+                    <form action='editar_usuario.php' method='post'> 
+                    <input type='text' value='". $dato['id_usuario'] ."' name='id_usuario_editar' id='id_usuario_editar'  hidden>          
+                    <button class='btn btn-success' data-bs-toggle='modal input_editar_user' data-bs-target='#editarInfoUser' value = 'Editar'>Editar</button> 
+                    </form>
+                    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#eliminarUser' value = 'Eliminar'>Eliminar</button></td></tr>";
+                        }
                 ?>
 
             </tbody>
