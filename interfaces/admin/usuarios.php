@@ -80,6 +80,7 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 0){
                     <th scope="col">ID del Usuario</th>
                     <th scope="col">Nombre del Usuario</th>
                     <th scope="col">Apellido del Usuario</th>
+                    <th scope="col">Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -89,18 +90,42 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 0){
                 $datos = getUsers($conn);
 
                 foreach ($datos as $dato) {
-
+                    if($dato['estado']==2){
                     echo "<tr>
                     <th scope='row'>" . $dato['id_usuario'] . "</th> 
                     <td >" . $dato['nombre_usuario'] . "</td> 
                     <td>" . $dato['apellido_usuario'] . "</td>
+                    <td>Inactivo </td>
+                    <td>
+                    <form action='editar_estado.php' method='post'> 
+                    <input type='text' value='". $dato['id_usuario'] ."' name='id_usuario_editar' id='id_usuario_editar'  hidden>          
+                    <button class='btn btn-success' data-bs-toggle='modal input_editar_user' data-bs-target='#editarInfoUser' value = 'Editar'>Editar</button> 
+                    </form>
+                    
+                    <form action='editar_estado.php' method='post'> 
+                    <input type='text' value='". $dato['id_usuario'] ."' name='id_usuario_editar' id='id_usuario_editar'  hidden>          
+                    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#eliminarUser' value = ''>Activar</button></td></tr>
+                    </form>";
+
+                    }else if($dato['estado']==1){
+                        echo "<tr>
+                    <th scope='row'>" . $dato['id_usuario'] . "</th> 
+                    <td >" . $dato['nombre_usuario'] . "</td> 
+                    <td>" . $dato['apellido_usuario'] . "</td>
+                    <td>Activo </td>
                     <td>
                     <form action='editar_usuario.php' method='post'> 
                     <input type='text' value='". $dato['id_usuario'] ."' name='id_usuario_editar' id='id_usuario_editar'  hidden>          
                     <button class='btn btn-success' data-bs-toggle='modal input_editar_user' data-bs-target='#editarInfoUser' value = 'Editar'>Editar</button> 
                     </form>
-                    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#eliminarUser' value = 'Eliminar'>Eliminar</button></td></tr>";
-                        }
+
+                    <form action='editar_estado.php' method='post'> 
+                    <input type='text' value='". $dato['id_usuario'] ."' name='id_usuario_editar' id='id_usuario_editar'  hidden>          
+                    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#eliminarUser' >Inactivar</button></td></tr>
+                    </form>";
+                    
+                    }
+                }
                 ?>
 
             </tbody>
@@ -110,66 +135,24 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 0){
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Inhabilitar Usuario</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h3>¿Esta seguro de eliminar este usuario?</h3>
+                        <h3>¿Esta seguro de inhabilitar este usuario?</h3>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary"><a href="../../index.php">Eliminar</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="editarInfoUser" tabindex="-1" aria-labelledby="editarInfoUser" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar informacion del Usuario</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
                         <form action="">
-                            <div class="input-group mb-4 mt-4">
-                                <input type="text" hidden value=<?php echo $dato['id_rol']; ?> class="quitar-borde-left form-control" aria-label="Username" aria-describedby="basic-addon1" name="Username" id="Username">
-                            </div>
-                            <div class="input-group mb-4 mt-4">
-                                <input type="text" value=<?php echo $dato['nombre_usuario']; ?> class="quitar-borde-left form-control" aria-label="Username" aria-describedby="basic-addon1" name="Username" id="Username">
-                            </div>
-                            <div class="input-group mb-4 mt-4">
-                                <input type="text" value=<?php echo $dato['apellido_usuario']; ?> class="quitar-borde-left form-control" aria-describedby="basic-addon1" name="apellido" id="apellido" required>
-                            </div>
-                            <div class="input-group mb-4 mt-4">
-                                <input type="text" value=<?php echo $dato['nombre_usuario']; ?> class="quitar-borde-left form-control" aria-label="Username" aria-describedby="basic-addon1" name="Username" id="Username">
-                            </div>
-                            <div class="input-group mb-4 mt-4">
-                                <input type="text" value=<?php echo $dato['apellido_usuario']; ?> class="quitar-borde-left form-control" aria-describedby="basic-addon1" name="apellido" id="apellido" required>
-                            </div>
-                            <div class="input-group mb-4 mt-4">
-                                <input type="text" value=<?php echo $dato['nombre_usuario']; ?> class="quitar-borde-left form-control" aria-label="Username" aria-describedby="basic-addon1" name="Username" id="Username">
-                            </div>
-                            <div class="input-group mb-4 mt-4">
-                                <input type="text" value=<?php echo $dato['apellido_usuario']; ?> class="quitar-borde-left form-control" aria-describedby="basic-addon1" name="apellido" id="apellido" required>
-                            </div>
-                            <div class="input-group mb-4 mt-4">
-                                <input type="text" value=<?php echo $dato['nombre_usuario']; ?> class="quitar-borde-left form-control" aria-label="Username" aria-describedby="basic-addon1" name="Username" id="Username">
-                            </div>
-                            <div class="input-group mb-4 mt-4">
-                                <input type="text" value=<?php echo $dato['apellido_usuario']; ?> class="quitar-borde-left form-control" aria-describedby="basic-addon1" name="apellido" id="apellido" required>
-                            </div>
+                            <input type="text" name="id_user" id="id_user" value="<?php echo $dato['id_usuario']; ?>">
+                            <button type="submmit" class="btn btn-primary">Eliminar</button>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary"><a href="../../index.php">Actualizar</a></button>
-                    </div>
                 </div>
             </div>
         </div>
+
+    
     </div>
 
     <?php

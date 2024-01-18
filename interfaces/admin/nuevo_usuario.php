@@ -136,8 +136,8 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 0) {
                         <label for="floatingPassword">Contraseña</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="boolean" class="form-control" name="estado_usuario" id="estado_usuario" placeholder="nombre de usuario" value="1" required readonly>
-                        <label for="floatingPassword">Estado</label>
+                        <input type="boolean" class="form-control" name="estado_usuario" id="estado_usuario" placeholder="nombre de usuario" value="1" required readonly hidden>
+                    
                     </div>
 
                     <button type="submmit" class="btn btn-success mb-3">Crear Usuario</button>

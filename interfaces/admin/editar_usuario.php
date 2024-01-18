@@ -3,6 +3,8 @@
 session_start();
 
 include('../../acciones/consultas/consultar_editar_usuarios.php');
+include('../../acciones/consultas/consulta_estados.php');
+include('../../acciones/consultas/consulta_estado_distinto.php');
 include('../../acciones/configuracion.php');
 
 if (!isset($_SESSION['username']) || $_SESSION['status'] == 0) {
@@ -110,6 +112,39 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 0) {
                         <label for="floatingPassword">Número de documento de identidad</label>
                     </div>
 
+                    <?php
+
+                        $estado=getEstado($info['id_usuario'], $conn);
+
+                        foreach ($estado as $dato) {
+
+                        if($dato['estado'] == 1){
+
+                        
+                        
+                    ?>
+
+                    <div class="form-floating mb-3">
+                        <input type='text' class='form-control' name='estado' id='estado' placeholder='Estado' value='Activo' required readonly>
+                        <label for='floatingPassword'>Estado</label>
+                    </div>                      
+                                            
+                    <?php
+                        }else{
+                    ?>
+                    <div class="form-floating mb-3">
+                        <input type='text' class='form-control' name='estado' id='estado' placeholder='Estado' value='Inactivo' required readonly>
+                        <label for='floatingPassword'>Estado</label>
+                    </div>
+                    
+                    <?php
+
+                        }
+                        }
+                        
+
+                    ?>
+                            
                     <button type="submmit" class="btn btn-success mb-3">Actualizar</button>
 
                 </form>
