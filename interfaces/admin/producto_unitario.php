@@ -59,30 +59,22 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 2){
 
     <div class="container text-center titulos mb-4" style="display: block;">
       <p>
-        ADMINISTRAR INVENTARIO
+        PRODUCTOS UNITARIOS
       </p>
     </div> 
     <div class="container text-center">
         <div class="row">
-            <div class="rep-van-inv g-col-4 m-5" style=" width: 200px; height: 189px;">
-                <img src="../../img/icons/inventario/VectorProductoNuevo.png" alt="Reportes">
-                <p class="texto-tarjetas"><a href="producto_unitario.php">P/ Unitario</a></p>
+            <div class="rep-van-inv g-col-4 m-5 container text-center" style=" width: 200px; height: 189px;">
+            <p></p>    
+            <p class="texto-tarjetas"><a href="">Productos Unitarios</a></p>
             </div>
        
-            <div class="rep-van-inv g-col-4 m-5">
-                <img src="../../img/icons/inventario/VectorProductoVentas.png" alt="Ventas">
-                <p class="texto-tarjetas"><a href="">P/ de Venta</a></p>
+            <div class="rep-van-inv g-col-4 m-5 container text-center">
+                <p></p>
+                <p class="texto-tarjetas"><a href="">Unidades de Medida</a></p>
             </div>
         
-            <div class="rep-van-inv g-col-4 m-5">
-                <img src="../../img/icons/inventario/VectorCategorias.png" alt="Inventarios">
-                <p class="texto-tarjetas"><a href="">Categorias</a></p>
-            </div>
-
-            <div class="rep-van-inv g-col-4 m-5">
-                <img src="../../img/icons/inventario/VectorInventarioExistente.png" alt="Inventarios">
-                <p class="texto-tarjetas"><a href="">Inv. Existente</a></p>
-            </div>
+            
         </div>
     </div>
    
