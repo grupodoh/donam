@@ -7,7 +7,7 @@ include('../../acciones/consultas/consulta_estados.php');
 include('../../acciones/consultas/consulta_estado_distinto.php');
 include('../../acciones/configuracion.php');
 
-if (!isset($_SESSION['username']) || $_SESSION['status'] == 0) {
+if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
 
     header("Location: ../../index.php");
 } else {

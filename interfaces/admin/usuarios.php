@@ -4,7 +4,7 @@ session_start();
 
 include("../../acciones/consultas/usuarios.php");
 
-if(!isset($_SESSION['username']) || $_SESSION['status'] == 0){
+if(!isset($_SESSION['username']) || $_SESSION['status'] == 2){
 
     header("Location: ../../index.php");
   
@@ -61,16 +61,26 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 0){
     </div>
 
     <div style="margin-top: 70px; display: inline-block;">
-        <div>
+        <div class="container">
             <form action="nuevo_usuario.php">
                 <button type="submit" class="btn btn-success">+ Nuevo Usuario</button>
             </form>
         </div>
+
+        <div>
+                <button type="button" class="btn btn-primary mb-3 mt-3">
+                    <a href="config.php">
+                        < Regresar </a>
+                </button>
+            </div>
+        
         <div class="container text-center titulos" style="display: block;">
             <p>
                 USUARIOS
             </p>
         </div>
+
+        
     </div>
 
     <div class="container text-center">
@@ -97,7 +107,7 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 0){
                     <td>" . $dato['apellido_usuario'] . "</td>
                     <td>Inactivo </td>
                     <td>
-                    <form action='editar_estado.php' method='post'> 
+                    <form action='editar_usuario.php' method='post'> 
                     <input type='text' value='". $dato['id_usuario'] ."' name='id_usuario_editar' id='id_usuario_editar'  hidden>          
                     <button class='btn btn-success' data-bs-toggle='modal input_editar_user' data-bs-target='#editarInfoUser' value = 'Editar'>Editar</button> 
                     </form>
@@ -131,33 +141,9 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 0){
             </tbody>
         </table>
 
-        <div class="modal fade" id="eliminarUser" tabindex="-1" aria-labelledby="eliminarUser" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Inhabilitar Usuario</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h3>¿Esta seguro de inhabilitar este usuario?</h3>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <form action="">
-                            <input type="text" name="id_user" id="id_user" value="<?php echo $dato['id_usuario']; ?>">
-                            <button type="submmit" class="btn btn-primary">Eliminar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        
     
     </div>
-
-    <?php
-
-    ?>
 
 
 

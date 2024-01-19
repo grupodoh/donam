@@ -1,13 +1,18 @@
 <?php
 
+include('../../acciones/configuracion.php');
+include('../../acciones/consultas/usuarios.php');
+
+
+
 session_start();
 
-include("../../acciones/consultas/usuarios.php");
 
 if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
 
     header("Location: ../../index.php");
 } else {
+
 
 ?>
 
@@ -20,15 +25,9 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
         <title>Doña M</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href="../../css/estilos.css" rel="stylesheet" type="text/css" />
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     </head>
 
     <body>
-
-
         <div style="background-color: #D7DCE1; ">
             <nav class="navbar navbar-dark bg-dark fixed-top menu-color align-items-center">
                 <div class="container-fluid">
@@ -65,79 +64,58 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
             </nav>
         </div>
 
-
-
-        <div class="modal fade" id="eliminarUser" tabindex="-1" aria-labelledby="eliminarUser" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar estado de Usuario</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h3>¿Esta seguro que desea modificar el estado del usuario?</h3>
-                    </div>
-                    <div class="modal-footer">
-
-                        <form action="usuarios.php" method="post">
-                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        </form>
-                        
-                        <form action="../../acciones/insertar/editar_estado_usuario.php">
-                            <input type="text" name="id_user" id="id_user" value="<?php echo $_REQUEST['id_usuario_editar']; ?>" hidden>
-                            <button type="submmit" class="btn btn-primary">Modificar</button>
-                        </form>
-
-                    </div>
-                </div>
+        <div style="margin-top: 70px;">
+            <div>
+                <button type="button" class="btn btn-primary mb-3">
+                    <a href="config.php">
+                        < Regresar </a>
+                </button>
+            </div>
+            <div class="container text-center titulos" style="display: block;">
+                <p>
+                    CAMBIO DE CONTRASEÑA
+                </p>
             </div>
         </div>
 
-        <!-- <div class="modal" id="miModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
+        <div class="container text-center">
+            <div class="form-floating mb-3">
+                <form action="../../acciones/insertar/editar_clave_usuario.php" method="post">
+                    <div class="form-floating mb-3">
+                        <select class="form-select form-select-lg mb-3" name = "usuario" id="usuario" aria-label="Large select example">
+                            <option selected >Seleccione usuario </option>
+                            <?php
 
-                    <!-- Cabecera de la ventana modal -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Ventana Modal</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            $usuarios = getUsers($conn);
+
+                            foreach ($usuarios as $usuario) {
+
+                                echo "
+                                    <option value='" . $usuario['id_usuario'] . "'>" . $usuario['nombre_usuario'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <label for="floatingPassword">Elegir Usuario</label>
                     </div>
 
-                    <!-- Contenido de la ventana modal -->
-                    <div class="modal-body">
-                        ¡Hola! Esto es una ventana modal de Bootstrap.
+                    <div class="input-group">
+                        <span class="input-group-text">Nueva Contraseña</span>
+                        <input type="password" name="nueva_clave" id="nueva_clave" aria-label="Contraseña" class="form-control">
                     </div>
 
-                    <!-- Pie de la ventana modal -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    </div>
-
-                </div>
+                    <button type="submmit" class="btn btn-success mb-3 mt-3">Cambiar contraseña</button>
+                </form>
             </div>
-        <!--</div> -->
-
-        <!-- Script para abrir la ventana modal al cargar la página -->
-        <script>
-            $(document).ready(function() {
-                $('#eliminarUser').modal('show');
-            });
-        </script>
-
-
         </div>
 
-    <?php
-}
-    ?>
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </body>
     </body>
 
-
     </html>
+
+<?php
+
+}
+
+?>

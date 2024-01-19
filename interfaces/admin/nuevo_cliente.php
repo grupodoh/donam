@@ -2,12 +2,17 @@
 
 session_start();
 
-include("../../acciones/consultas/usuarios.php");
+include('../../acciones/consultas/consultar_editar_usuarios.php');
+include('../../acciones/configuracion.php');
+include('../../acciones/consultas/roles.php');
+include('../../acciones/consultas/tipo_documento.php');
+
 
 if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
 
     header("Location: ../../index.php");
 } else {
+
 
 ?>
 
@@ -20,15 +25,9 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
         <title>Doña M</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href="../../css/estilos.css" rel="stylesheet" type="text/css" />
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     </head>
 
     <body>
-
-
         <div style="background-color: #D7DCE1; ">
             <nav class="navbar navbar-dark bg-dark fixed-top menu-color align-items-center">
                 <div class="container-fluid">
@@ -59,85 +58,72 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
                                 <li class="nav-item">
                                     <a class="nav-link items-menu" href="../../acciones/logout/logout.php" style="color:#C19A6B">Salir</a>
                                 </li>
+                                
                         </div>
                     </div>
                 </div>
             </nav>
         </div>
 
+        <div style="margin-top: 70px; display: inline-block;">
+            <div>
+                <button type="button" class="btn btn-primary mb-3">
+                    <a href="clientes.php">
+                        < Regresar
+                    </a>
+                </button>
+            </div>
 
-
-        <div class="modal fade" id="eliminarUser" tabindex="-1" aria-labelledby="eliminarUser" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar estado de Usuario</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h3>¿Esta seguro que desea modificar el estado del usuario?</h3>
-                    </div>
-                    <div class="modal-footer">
-
-                        <form action="usuarios.php" method="post">
-                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        </form>
-                        
-                        <form action="../../acciones/insertar/editar_estado_usuario.php">
-                            <input type="text" name="id_user" id="id_user" value="<?php echo $_REQUEST['id_usuario_editar']; ?>" hidden>
-                            <button type="submmit" class="btn btn-primary">Modificar</button>
-                        </form>
-
-                    </div>
-                </div>
+            <div class="container text-center titulos" style="display: block;">
+                <p>
+                    CREAR NUEVO CLIENTE
+                </p>
             </div>
         </div>
 
-        <!-- <div class="modal" id="miModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
+        <div class="container text-center">
 
-                    <!-- Cabecera de la ventana modal -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Ventana Modal</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+           
+                <form action="../../acciones/insertar/crear_cliente.php">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="nombre_cliente" id="nombre_cliente" placeholder="nombre de usuario" value="" required>
+                        <label for="floatingPassword">Nombre</label>
                     </div>
 
-                    <!-- Contenido de la ventana modal -->
-                    <div class="modal-body">
-                        ¡Hola! Esto es una ventana modal de Bootstrap.
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="apellido_cliente" id="apellido_cliente" placeholder="apellido de usuario" value="" required>
+                        <label for="floatingPassword">Apellido</label>
                     </div>
 
-                    <!-- Pie de la ventana modal -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" name="num_id_cliente" id="num_id_cliente" placeholder="apellido de usuario" value="" required>
+                        <label for="floatingPassword">Número de identidad</label>
                     </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="num_tel_cel" id="num_tel_cel" placeholder="número de documento de identidad" value="" required>
+                        <label for="floatingPassword">Número de telefono o celular</label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="direccion" id="direccion" placeholder="número de documento de identidad" value="" required>
+                        <label for="floatingPassword">Dirección</label>
+                    </div>
+                    
 
-                </div>
-            </div>
-        <!--</div> -->
+                    <button type="submmit" class="btn btn-success mb-3">Crear Cliente</button>
 
-        <!-- Script para abrir la ventana modal al cargar la página -->
-        <script>
-            $(document).ready(function() {
-                $('#eliminarUser').modal('show');
-            });
-        </script>
-
-
+                </form>
         </div>
 
-    <?php
-}
-    ?>
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </body>
     </body>
 
-
     </html>
+
+<?php
+            
+        }
+
+?>

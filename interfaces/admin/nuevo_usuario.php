@@ -8,7 +8,7 @@ include('../../acciones/consultas/roles.php');
 include('../../acciones/consultas/tipo_documento.php');
 
 
-if (!isset($_SESSION['username']) || $_SESSION['status'] == 0) {
+if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
 
     header("Location: ../../index.php");
 } else {
@@ -84,7 +84,7 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 0) {
         <div class="container text-center">
 
            
-                <form action="../../acciones/insertar/crear_usuario.php">
+                <form action="../../acciones/insertar/crear_cliente.php">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="nombre de usuario" value="" required>
                         <label for="floatingPassword">Nombre</label>
@@ -131,6 +131,7 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 0) {
                         </select>
                         <label for="floatingPassword">Tipo de documento de identidad</label>
                     </div>
+                    
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" name="password" id="password" placeholder="número de documento de identidad" value="" required>
                         <label for="floatingPassword">Contraseña</label>

@@ -1,13 +1,18 @@
 <?php
 
+include('../../acciones/configuracion.php');
+include('../../acciones/consultas/clientes.php');
+
+
+
 session_start();
 
-include("../../acciones/consultas/usuarios.php");
 
 if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
 
     header("Location: ../../index.php");
 } else {
+
 
 ?>
 
@@ -20,15 +25,9 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
         <title>Doña M</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href="../../css/estilos.css" rel="stylesheet" type="text/css" />
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     </head>
 
     <body>
-
-
         <div style="background-color: #D7DCE1; ">
             <nav class="navbar navbar-dark bg-dark fixed-top menu-color align-items-center">
                 <div class="container-fluid">
@@ -65,79 +64,88 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
             </nav>
         </div>
 
-
-
-        <div class="modal fade" id="eliminarUser" tabindex="-1" aria-labelledby="eliminarUser" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar estado de Usuario</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h3>¿Esta seguro que desea modificar el estado del usuario?</h3>
-                    </div>
-                    <div class="modal-footer">
-
-                        <form action="usuarios.php" method="post">
-                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        </form>
-                        
-                        <form action="../../acciones/insertar/editar_estado_usuario.php">
-                            <input type="text" name="id_user" id="id_user" value="<?php echo $_REQUEST['id_usuario_editar']; ?>" hidden>
-                            <button type="submmit" class="btn btn-primary">Modificar</button>
-                        </form>
-
-                    </div>
-                </div>
+        <div style="margin-top: 70px; display: inline-block;">
+            <div class="container">
+                <form action="nuevo_cliente.php">
+                    <button type="submit" class="btn btn-success">+ Nuevo Cliente</button>
+                </form>
             </div>
-        </div>
 
-        <!-- <div class="modal" id="miModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <!-- Cabecera de la ventana modal -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Ventana Modal</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Contenido de la ventana modal -->
-                    <div class="modal-body">
-                        ¡Hola! Esto es una ventana modal de Bootstrap.
-                    </div>
-
-                    <!-- Pie de la ventana modal -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    </div>
-
-                </div>
+            <div>
+                <button type="button" class="btn btn-primary mb-3 mt-3">
+                    <a href="config.php">
+                        < Regresar </a>
+                </button>
             </div>
-        <!--</div> -->
 
-        <!-- Script para abrir la ventana modal al cargar la página -->
-        <script>
-            $(document).ready(function() {
-                $('#eliminarUser').modal('show');
-            });
-        </script>
+            <div class="container text-center titulos" style="display: block;">
+                <p>
+                    CLIENTES
+                </p>
+            </div>
 
 
         </div>
 
-    <?php
-}
-    ?>
+        <div class="container text-center">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID del Cliente</th>
+                        <th scope="col">Nombre del Cliente</th>
+                        <th scope="col">Apellido del Cliente</th>
+                        <th scope="col">Núm Identidad</th>
+                        <th>Núm Cel / Tel</th>
+                        <th>Dirección</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+
+                    <?php
+                    $clientes = getClientes($conn);
+
+                    if (!isset($datos)) {
+
+                        foreach ($clientes as $cliente) {
+                            echo "<tr>
+                            <th scope='row'>" . $cliente['id_cliente'] . "</th> 
+                            <td >" . $cliente['nombre_cliente'] . "</td> 
+                            <td>" . $cliente['apellido_cliente'] . "</td>
+                            <td>" . $cliente['num_documento'] . "</td>  
+                            <td>". $cliente['telefono_cliente'] . "</td>
+                            <td>". $cliente['direccion'] . "</td>                              
+                            ";
+                        }
+                    } else {
+                        echo "
+                        <tr>
+                    <th scope='row'></th> 
+                    <td ></td> 
+                    <td></td>
+                    <td></td>
+                    <td>
+                    
+                    ";
+                    }
+                    ?>
 
 
 
+                </tbody>
+            </table>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </body>
     </body>
 
-
     </html>
+
+<?php
+
+}
+
+?>

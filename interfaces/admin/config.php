@@ -4,7 +4,7 @@
 session_start();
 
 
-if(!isset($_SESSION['username']) || $_SESSION['status'] == 0){
+if(!isset($_SESSION['username']) || $_SESSION['status'] == 2){
 
   header("Location: ../../index.php");
 
@@ -83,11 +83,11 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 0){
 
             <div class="rep-van-inv g-col-4 m-5">
                 <img src="../../img/icons/VectorSeguridad.png" alt="Inventarios">
-                <p class="texto-tarjetas"><a href="">Seguridad</a></p>
+                <p class="texto-tarjetas"><a href="seguridad.php">Seguridad</a></p>
             </div>
             <div class="rep-van-inv g-col-4 m-5">
                 <img src="../../img/icons/VectorUsuarios.png" alt="Ventas">
-                <p class="texto-tarjetas"><a href="">Clientes</a></p>
+                <p class="texto-tarjetas"><a href="clientes.php">Clientes</a></p>
             </div>
         </div>
     </div>

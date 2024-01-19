@@ -43,7 +43,7 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 2){
                       <a class="nav-link items-menu" href="#" style="color:#C19A6B">Reportes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link items-menu" href="inventario.php" style="color:#C19A6B">Inventario</a>
+                        <a class="nav-link items-menu" href="#" style="color:#C19A6B">Inventario</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link items-menu" href="Config.php" style="color:#C19A6B">Configuración</a>
@@ -57,26 +57,31 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 2){
           </nav>          
     </div>
 
-    <div class="container text-center titulos" style="display: block;">
+    <div class="container text-center titulos mb-4" style="display: block;">
       <p>
-        MODULOS
+        ADMINISTRAR INVENTARIO
       </p>
     </div> 
     <div class="container text-center">
         <div class="row">
             <div class="rep-van-inv g-col-4 m-5" style=" width: 200px; height: 189px;">
-                <img src="../../img/icons/VectorReportes.png" alt="Reportes">
-                <p class="texto-tarjetas"><a href="">Reportes</a></p>
+                <img src="../../img/icons/inventario/VectorProductoNuevo.png" alt="Reportes">
+                <p class="texto-tarjetas"><a href="">P/ Unitario</a></p>
             </div>
        
             <div class="rep-van-inv g-col-4 m-5">
-                <img src="../../img/icons/VactorVentas.png" alt="Ventas">
-                <p class="texto-tarjetas"><a href="">Ventas</a></p>
+                <img src="../../img/icons/inventario/VectorProductoVentas.png" alt="Ventas">
+                <p class="texto-tarjetas"><a href="">P/ de Venta</a></p>
             </div>
         
             <div class="rep-van-inv g-col-4 m-5">
-                <img src="../../img/icons/VectorInventario.png" alt="Inventarios">
-                <p class="texto-tarjetas"><a href="inventario.php">Inventario</a></p>
+                <img src="../../img/icons/inventario/VectorCategorias.png" alt="Inventarios">
+                <p class="texto-tarjetas"><a href="">Categorias</a></p>
+            </div>
+
+            <div class="rep-van-inv g-col-4 m-5">
+                <img src="../../img/icons/inventario/VectorInventarioExistente.png" alt="Inventarios">
+                <p class="texto-tarjetas"><a href="">Inv. Existente</a></p>
             </div>
         </div>
     </div>

@@ -27,8 +27,6 @@ function acceder($user, $pass, $con){
         $status = $row['estado'];
         $rol = $row['id_rol'];
 
-        echo $_SESSION['status'];
-
         //Aquí se valida si el estado del usuario es activo (1) o incativo (0).
         if ($_SESSION['status'] == 2) {
 
@@ -53,5 +51,7 @@ function acceder($user, $pass, $con){
             }
             exit();
         }
+
+        return $row;
     }
 }
