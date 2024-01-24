@@ -43,7 +43,7 @@ if(!isset($_SESSION['username']) || $_SESSION['status'] == 2){
                       <a class="nav-link items-menu" href="#" style="color:#C19A6B">Reportes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link items-menu" href="#" style="color:#C19A6B">Inventario</a>
+                        <a class="nav-link items-menu" href="inventario.php" style="color:#C19A6B">Inventario</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link items-menu" href="Config.php" style="color:#C19A6B">Configuración</a>

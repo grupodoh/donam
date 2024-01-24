@@ -2,6 +2,12 @@
 
 session_start();
 
+include('../../acciones/consultas/consultar_editar_usuarios.php');
+include('../../acciones/configuracion.php');
+include('../../acciones/consultas/roles.php');
+include('../../acciones/consultas/tipo_documento.php');
+
+
 if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
 
     header("Location: ../../index.php");
@@ -44,7 +50,7 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
                                     <a class="nav-link items-menu" href="#" style="color:#C19A6B">Reportes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link items-menu" href="inventario.php" style="color:#C19A6B">Inventario</a>
+                                    <a class="nav-link items-menu" href="#" style="color:#C19A6B">Inventario</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link items-menu" href="Config.php" style="color:#C19A6B">Configuración</a>
@@ -52,40 +58,40 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
                                 <li class="nav-item">
                                     <a class="nav-link items-menu" href="../../acciones/logout/logout.php" style="color:#C19A6B">Salir</a>
                                 </li>
+
                         </div>
                     </div>
                 </div>
             </nav>
         </div>
 
-        <div style="margin-top: 70px;">
-        <div>
-            <button type="button" class="btn btn-primary mb-3">
-                <a href="inventario.php">
-                    < Regresar </a>
-            </button>
-        </div>
-
-        <div class="container text-center titulos mb-4" style="display: block;">
-            <p>
-                PRODUCTOS UNITARIOS
-            </p>
-        </div>
-        </div>
-        <div class="container text-center">
-            <div class="row">
-                <div class="rep-van-inv g-col-4 m-5 container text-center" style=" width: 200px; height: 189px;">
-                    <p></p>
-                    <p class="texto-tarjetas"><a href="">Productos Unitarios</a></p>
-                </div>
-
-                <div class="rep-van-inv g-col-4 m-5 container text-center">
-                    <p></p>
-                    <p class="texto-tarjetas"><a href="unidades_medida.php">Unidades de Medida</a></p>
-                </div>
-
-
+        <div style="margin-top: 70px; display: inline-block;">
+            <div>
+                <button type="button" class="btn btn-primary mb-3">
+                    <a href="unidades_medida.php">
+                        < Regresar </a>
+                </button>
             </div>
+
+            <div class="container text-center titulos" style="display: block;">
+                <p>
+                    CREAR NUEVA UNIDAD DE MEDIDA
+                </p>
+            </div>
+        </div>
+
+        <div class="container text-center">
+
+
+            <form action="../../acciones/insertar/crear_unidad_medida.php">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="nombre_unidad" id="nombre_unidad" placeholder="nombre de usuario" value="" required>
+                    <label for="floatingPassword">Nombre de la unidad de medida</label>
+                </div>
+
+                <button type="submmit" class="btn btn-success mb-3">Crear Unidad</button>
+
+            </form>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
