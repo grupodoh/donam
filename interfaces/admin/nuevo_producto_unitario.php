@@ -5,7 +5,7 @@ session_start();
 include('../../acciones/consultas/consultar_editar_usuarios.php');
 include('../../acciones/configuracion.php');
 include('../../acciones/consultas/roles.php');
-include('../../acciones/consultas/tipo_documento.php');
+include('../../acciones/consultas/consulta_unidades_medida.php');
 
 
 if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
@@ -50,7 +50,7 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
                                     <a class="nav-link items-menu" href="#" style="color:#C19A6B">Reportes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link items-menu" href="inventario.php" style="color:#C19A6B">Inventario</a>
+                                    <a class="nav-link items-menu" href="#" style="color:#C19A6B">Inventario</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link items-menu" href="Config.php" style="color:#C19A6B">Configuración</a>
@@ -68,7 +68,7 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
         <div style="margin-top: 70px; display: inline-block;">
             <div>
                 <button type="button" class="btn btn-primary mb-3">
-                    <a href="usuarios.php">
+                    <a href="lista_productos_unitarios.php">
                         < Regresar
                     </a>
                 </button>
@@ -76,7 +76,7 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
 
             <div class="container text-center titulos" style="display: block;">
                 <p>
-                    CREAR NUEVO USUARIO
+                    CREAR NUEVO PRODUCTO UNITARIO
                 </p>
             </div>
         </div>
@@ -84,62 +84,33 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
         <div class="container text-center">
 
            
-                <form action="../../acciones/insertar/crear_cliente.php">
+                <form action="../../acciones/insertar/crear_producto_unitario.php">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="nombre de usuario" value="" required>
-                        <label for="floatingPassword">Nombre</label>
+                        <input type="text" class="form-control" name="nombre_pu" id="nombre_pu" placeholder="nombre de usuario" value="" required>
+                        <label for="floatingPassword">Nombre de producto</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="apellido_usuario" id="apellido_usuario" placeholder="apellido de usuario" value="" required>
-                        <label for="floatingPassword">Apellido</label>
+                        <input type="text" class="form-control" name="cantidad_unidad" id="cantidad_unidad" placeholder="apellido de usuario" value="" required>
+                        <label for="floatingPassword">Cantidad de la unidad</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <select class="form-select form-select-lg mb-3" name="tipo_doc_usuario" id="tipo_doc_usuario"aria-label="Large select example">
-                        <option selected>Seleccione un tipo de documento</option>
+                        <select class="form-select form-select-lg mb-3" name="tipo_unidad" id="tipo_unidad"aria-label="Large select example">
+                        <option selected>Seleccione unidad de medida</option>
                     <?php
 
-                                $docType=getTipoDocumento($conn);
+                                $uniteType=getUnidadesMedida($conn);
 
-                                foreach ($docType as $type ) {      
+                                foreach ($uniteType as $type ) {      
                                     
                                     echo "
-                                    <option value='".$type['id_tipo_documento']."'>".$type['nombre_tipo_documento']."</option>";
+                                    <option value='".$type['id_unidad']."'>".$type['nombre_unidad']."</option>";
                                 }
                                 ?>
                         </select>
-                        <label for="floatingPassword">Tipo de documento de identidad</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="doc_usuario" id="doc_usuario" placeholder="número de documento de identidad" value="" required>
-                        <label for="floatingPassword">Número de documento de identidad</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <select class="form-select form-select-lg mb-3" name="tipo_rol" id="tipo_rol"aria-label="Large select example">
-                        <option selected>Seleccione un tipo de rol</option>
-                    <?php
-
-                                $roles=getRoles($conn);
-
-                                foreach ($roles as $rol ) {      
-                                    
-                                    echo "
-                                    <option value='".$rol['id_rol']."'>".$rol['nombre_rol']."</option>";
-                                }
-                                ?>
-                        </select>
-                        <label for="floatingPassword">Tipo de documento de identidad</label>
+                        <label for="floatingPassword">Tipo de unidad de medida</label>
                     </div>
                     
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="password" id="password" placeholder="número de documento de identidad" value="" required>
-                        <label for="floatingPassword">Contraseña</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="boolean" class="form-control" name="estado_usuario" id="estado_usuario" placeholder="nombre de usuario" value="1" required readonly hidden>
-                    
-                    </div>
 
                     <button type="submmit" class="btn btn-success mb-3">Crear Usuario</button>
 

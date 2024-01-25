@@ -1,6 +1,13 @@
 <?php
 
+include('../../acciones/configuracion.php');
+include('../../acciones/consultas/consulta_productos_unitarios.php');
+include('../../acciones/consultas/consulta_unidad_medida_especifica.php');
+
+
+
 session_start();
+
 
 if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
 
@@ -58,34 +65,90 @@ if (!isset($_SESSION['username']) || $_SESSION['status'] == 2) {
             </nav>
         </div>
 
-        <div style="margin-top: 70px;">
-        <div>
-            <button type="button" class="btn btn-primary mb-3">
-                <a href="inventario.php">
-                    < Regresar </a>
-            </button>
-        </div>
-
-        <div class="container text-center titulos mb-4" style="display: block;">
-            <p>
-                PRODUCTOS UNITARIOS
-            </p>
-        </div>
-        </div>
-        <div class="container text-center">
-            <div class="row">
-                <div class="rep-van-inv g-col-4 m-5 container text-center" style=" width: 200px; height: 189px;">
-                    <p></p>
-                    <p class="texto-tarjetas"><a href="lista_productos_unitarios.php">Productos Unitarios</a></p>
-                </div>
-
-                <div class="rep-van-inv g-col-4 m-5 container text-center">
-                    <p></p>
-                    <p class="texto-tarjetas"><a href="unidades_medida.php">Unidades de Medida</a></p>
-                </div>
-
-
+        <div style="margin-top: 70px; display: inline-block;">
+            <div class="container">
+                <form action="nuevo_producto_unitario.php">
+                    <button type="submit" class="btn btn-success">+ Nuevo producto unitario</button>
+                </form>
             </div>
+
+            <div>
+                <button type="button" class="btn btn-primary mb-3 mt-3">
+                    <a href="producto_unitario.php">
+                        < Regresar </a>
+                </button>
+            </div>
+
+            <div class="container text-center titulos" style="display: block;">
+                <p>
+                   LISTA DE PRODUCTOS UNITARIOS.
+                </p>
+            </div>
+
+
+        </div>
+
+        <div class="container text-center">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID de Producto unitario</th>
+                        <th scope="col">Nombre de Producto unitario</th>   
+                        <th scope="col">Cantidad de la unidad</th>
+                        <th scope="col">Unidad de medida</th>                           
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+
+                    <?php
+                    $productosUnitarios = getProductosUnitarios($conn);
+
+                    if (!isset($datos)) {
+
+                        foreach ($productosUnitarios as $producto) {
+                            echo "<tr>
+                            <th scope='row'>" . $producto['id_producto_unitario'] . "</th> 
+                            <td >" . $producto['nombre_producto_unitario'] . "</td>
+                            <td >" . $producto['cantidad_producto_unitario'] . "</td> ";
+                            
+                            ?>
+                            <td>
+                           <?php 
+
+                            $datosUnidades = getUnidadesMedidaEspe($conn, $producto['id_unidad_medida']);
+                            
+                            foreach ($datosUnidades as $unidad){
+
+                            echo $unidad['nombre_unidad'] ;
+
+                            }
+                            ?>
+                          </td>
+                          
+                        <?php
+                            
+                        }
+                        
+                    } else {
+                        echo "
+                        <tr>
+                    <th scope='row'></th> 
+                    <td ></td> 
+                    <td></td>
+                    <td></td>
+                    <td>
+                    
+                    ";
+                    }
+                    ?>
+
+
+
+                </tbody>
+            </table>
+
+
+
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

@@ -75,8 +75,8 @@ ul li a{
     padding: 32px 54px;
     gap: 17px;
 
-    width: 180px;
-    height: 169px;
+    width: 270px;
+    height: 255px;
 
     background: #FFFFFF;
     border: 1px solid rgba(167, 169, 172, 0.5);
@@ -85,7 +85,7 @@ ul li a{
 }
 
 .rep-van-inv img{
-    width: 50px;
+    width: 200px;
     height: auto;
 }
 
